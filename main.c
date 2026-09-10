@@ -11,10 +11,18 @@
 /*
  * "You have no heart. . ."
  *
- * /\__/\
- * \    /
- *  \  /
- *   \/
+ * /\_._/\  /\
+ * \ /|\ / /..\
+ *  \\|// /....\
+ *   \./ / +  + \
+ *      /........\
+ *     /..........\
+ *    /............\
+ *   /..............\
+ *   +---..+---+..---+
+ *      |..|   |..|
+ *      |..|   |..|
+ *       \/     \/
  */
 
 #define ESC "\033"
@@ -44,7 +52,15 @@ static const char *text =
     "Accuracy comes first, because fixing mistakes costs more time "
     "than typing carefully in the first place. "
     "Sometimes the best programs are the kind that do exactly what they need "
-    "to and nothing more.";
+    "to and nothing more. "
+    "Programming is the art of telling one human what another wants "
+    "the computer to do. "
+    "Code is quiet, unlike the HR department getting flooded with "
+    "complaints because of a bug, work on your typing accuracy. "
+    "Typing quickly is good, typing quick and accurately is better. "
+    "Typos can cause errors, neither of us want that. "
+    "Missing semicolon on line 62! Work on your accuracy. "
+    "The sentence next to this one is actually on line 62.";
 
 typedef struct {
   int cols;
@@ -340,8 +356,10 @@ int main(void) {
     }
 
     if (c == 127 || c == 8) {
-      if (typed > 0)
+      if (typed > 0) {
         typed--;
+        input[typed] = '\0';
+      }
 
       continue;
     }
@@ -352,10 +370,13 @@ int main(void) {
     }
 
     if (isprint(c) && typed < text_length) {
+      input[typed] = (char)c;
+
       if (c != (unsigned char)text[typed])
         errors++;
 
       typed++;
+      input[typed] = '\0';
     }
   }
 

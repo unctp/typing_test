@@ -1,4 +1,5 @@
-TUI Typing Test (ttt)
+TUI typing test (ttt)
+pronounciation: two-e typing test
 
 simple one command compilation:
 ```C
